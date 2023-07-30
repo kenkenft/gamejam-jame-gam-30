@@ -11,7 +11,7 @@ public class PlayerMain : MonoBehaviour
                     _jumpVelDecayHigh = 1.4f, 
                     _jumpVelDecayLow = 1.9f;
 
-    [SerializeField] private bool _isFacingRight = true, _isAirborne = false, _isMovingSideways = false;
+    [SerializeField] private bool _isFacingRight = true, _isMovingSideways = false;
     private Vector2 _moveXY = new Vector2(0f, 0f);
     private Vector3 _maskX, _maskY;
     public Rigidbody2D PlayerRig;
@@ -21,15 +21,9 @@ public class PlayerMain : MonoBehaviour
 
     // public Animator animator;
 
-    [HideInInspector] public delegate void OnSomeEvent();
-    [HideInInspector] public static OnSomeEvent RestartButtonPressed;
-    [HideInInspector] public static OnSomeEvent DimensionButtonPressed;
+    [HideInInspector] public static ReturnBool CheckIsPlaying;
 
-    [HideInInspector] public delegate bool OnInteractKeyDown();
-    [HideInInspector] public static OnInteractKeyDown CheckIsPlaying;
-
-    [HideInInspector] public delegate void OnPlaySFX(string audioName);
-    [HideInInspector] public static OnPlaySFX PlaySFX;
+    [HideInInspector] public static SendString PlaySFX;
 
     void OnEnable()
     {
@@ -51,39 +45,18 @@ public class PlayerMain : MonoBehaviour
         // if(CheckIsPlaying.Invoke())
         // {
             Move();
-
-            if(Input.GetKeyDown("space")) 
-                Jump();
-
-            // SetPlayerAnimation();
-
-            VelocityDecay();
-
-            if(Input.GetKeyDown(KeyCode.G))
-                RestartButtonPressed?.Invoke();
-
-            if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.I))
-                DimensionButtonPressed?.Invoke();
         // }
     }
 
-    void Move()
+    private void Move()
     {
+        // Debug.Log("Player Move called!");
+
         _moveXY[0] = Input.GetAxis("Horizontal") * _playerSpeed;
-        _moveXY[1] = PlayerRig.velocity.y;
+        _moveXY[1] = Input.GetAxis("Vertical") * _playerSpeed;
 
         if( _moveXY[0] !=0 || _moveXY[1] !=0)
             PlayerRig.velocity = _moveXY;
-    }
-
-    public void Jump()
-    {
-        if(IsGrounded())
-        {    
-            PlayerRig.velocity = Vector2.up * _playerJump;
-            // _isAirborne = true;
-            PlaySFX?.Invoke("Jump");
-        }
     }
 
     public bool IsGrounded()
@@ -116,73 +89,6 @@ public class PlayerMain : MonoBehaviour
                                     };
     }
 
-    public void VelocityDecay()
-    {
-        float x = PlayerRig.velocity.x;
-        Vector3 mask = PlayerRig.velocity;
-
-        if( x !=0.0f )              // Gradually reduce x-axis velocity (Unless being boosted by ramps)
-        {
-            mask.x *= _speedDecayMultiplier;
-            PlayerRig.velocity = mask;
-        }
-
-        if(PlayerRig.velocity.y < 0)              // Reduces floatiness of jumps
-            PlayerRig.velocity += Vector2.up * Physics2D.gravity.y * _jumpVelDecayHigh * Time.deltaTime;    
-        else if(PlayerRig.velocity.y > 0 && !Input.GetButton("Jump"))     // For low jumps
-            PlayerRig.velocity += Vector2.up * Physics2D.gravity.y * _jumpVelDecayLow  * Time.deltaTime;                // Start increasing downward velocity once player lets go of jump input
-        
-    }//// End of VelocityDecay()
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        ContactPoint2D[] contact = new ContactPoint2D[col.contactCount];
-        int points = col.GetContacts(contact);
-
-        // // foreach(ContactPoint2D point in contact)
-        // // {
-        //     if(col.GetContact(0).normal == Vector2.up)   
-        //     {    
-        //         PlaySFX?.Invoke("Landed");
-        //         _isAirborne = false; 
-        //         // break;
-        //     }
-        // // }
-        foreach(ContactPoint2D point in contact)
-            {
-                // Debug.Log(point.normal);
-                if(point.normal == Vector2.up)   
-                {    
-                    PlaySFX?.Invoke("Landed");
-                    _isAirborne = false; 
-                    break;
-                }
-            }
-    }
-
-    // void OnCollisionStay2D(Collision2D col)
-    // {
-    //     if(_isAirborne)
-    //     {
-    //         ContactPoint2D[] contact = new ContactPoint2D[col.contactCount];
-    //         int points = col.GetContacts(contact);
-
-    //         foreach(ContactPoint2D point in contact)
-    //         {
-    //             Debug.Log(point.normal);
-    //             if(point.normal == Vector2.up)   
-    //             {    
-    //                 _isAirborne = false; 
-    //                 break;
-    //             }
-    //         }
-    //     }
-    // }
-
-    void OnCollisionExit2D(Collision2D col)
-    {
-        _isAirborne = true;
-    }
 
     public void RepositionPlayer(Vector3 location)
     {
