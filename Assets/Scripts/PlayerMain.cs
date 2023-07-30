@@ -5,11 +5,7 @@ using UnityEngine;
 public class PlayerMain : MonoBehaviour
 {
     [SerializeField]
-    private float   _playerSpeed = 10f, 
-                    _playerJump = 10f,
-                    _speedDecayMultiplier = 0.95f,
-                    _jumpVelDecayHigh = 1.4f, 
-                    _jumpVelDecayLow = 1.9f;
+    private float   _playerSpeed = 10f;
 
     [SerializeField] private bool _isFacingRight = true, _isMovingSideways = false;
     private Vector2 _moveXY = new Vector2(0f, 0f);
