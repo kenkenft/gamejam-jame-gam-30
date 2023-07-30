@@ -26,4 +26,10 @@ public class EnemyMain : MonoBehaviour
         _face.sprite = EnemyProperties.Face;
         _collider.radius = _body.sprite.bounds.extents[0];
     }
+
+    public float[] GetDamage()
+    {
+        float[] damageValues = {_physicalDamagePercentage, _timeDamagePercentage};
+        return damageValues;
+    }
 }
