@@ -9,5 +9,5 @@ public delegate void SendString(string value);
 
 public class GameProperties
 {
-    
+    public static float PlayerSpeed;
 }
