@@ -25,7 +25,14 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log($"amount: {amount}");
         _currentHealth += amount;    // If amount is positive, then it is healing; if amount is negative, then it is damage
+        _currentHealth = Mathf.Clamp(_currentHealth, 0f, _maxHealth);
         _healthBar.UpdateHealthBar(_currentHealth, _maxHealth);
+
+        if(_currentHealth <= 0f)
+        {
+            Debug.Log("Player is dead");
+            // ToDo Trigger endgame
+        }
     }
 
     void Update()
