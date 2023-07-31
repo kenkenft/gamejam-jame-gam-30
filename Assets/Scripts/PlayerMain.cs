@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMain : MonoBehaviour
 {
     [SerializeField]
-    private float   _playerSpeed = 10f;
+    private float _playerSpeed = 10f;
 
     [SerializeField] private bool _isFacingRight = true, _isMovingSideways = false;
     private Vector2 _moveXY = new Vector2(0f, 0f);
@@ -15,18 +15,26 @@ public class PlayerMain : MonoBehaviour
     private Ray2D[] _rays;
     public LayerMask GroundLayerMask;
 
+    [SerializeField] private AgeState _currentAge = AgeState.Young;
+
     // public Animator animator;
 
     [HideInInspector] public static ReturnBool CheckIsPlaying;
 
     [HideInInspector] public static SendString PlaySFX;
 
+    [HideInInspector] public static SendInt AgeRequested;
+
     void OnEnable()
     {
+        PlayerAge.AgeChanged = SetPlayerAge;
+        PlayerAge.AgeRequested = GetPlayerAge;
     }
     
     void OnDisable()
     {
+        PlayerAge.AgeChanged = null;
+        PlayerAge.AgeRequested = null;
     }
 
     void Start()
@@ -89,6 +97,17 @@ public class PlayerMain : MonoBehaviour
     public void RepositionPlayer(Vector3 location)
     {
         this.gameObject.transform.position = location;
+    }
+
+    void SetPlayerAge(int ageEnum)
+    {
+        _currentAge = (AgeState)ageEnum;
+        Debug.Log($"Player age: {_currentAge}");
+    }
+
+    int GetPlayerAge()
+    {
+        return (int)_currentAge;
     }
 
 
