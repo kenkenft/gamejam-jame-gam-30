@@ -6,8 +6,6 @@ public class PlayerAge : MonoBehaviour
 {
     
     [SerializeField] private int _maxTime = 60, _currentTime = 0;
-    WaitForSecondsRealtime timerDelay = new WaitForSecondsRealtime(0.5f);
-
     [HideInInspector] public static ReturnBool CheckIsPaused;
     [HideInInspector] public static OnSomeEvent TriggerEndGame;
     [HideInInspector] public static OnSomeEvent HourGlassFlipped;
@@ -15,7 +13,6 @@ public class PlayerAge : MonoBehaviour
     [HideInInspector] public static SendInt AgeChanged;
     [HideInInspector] public static ReturnInt AgeRequested;
     [HideInInspector] public static SendFloat HourGlassUpdated;
-    // Start is called before the first frame update
      
     void OnEnable()
     {
@@ -43,7 +40,7 @@ public class PlayerAge : MonoBehaviour
         _currentTime = _maxTime;
         while(_currentTime > 0)
         {
-            yield return timerDelay;
+            yield return GameProperties.timerDelay;
             // if(!CheckIsPaused.Invoke())
             // {
                 _currentTime--;

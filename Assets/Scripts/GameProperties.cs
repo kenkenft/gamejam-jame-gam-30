@@ -20,6 +20,7 @@ public enum HourGlassInverted
 public class GameProperties
 {
     public static float PlayerSpeed;
+    public static WaitForSecondsRealtime timerDelay = new WaitForSecondsRealtime(0.5f);
 
     // public enum PlayerAge
     // {
