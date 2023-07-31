@@ -54,6 +54,12 @@ public class PlayerMain : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.H))
                 HourGlassFlipped?.Invoke();
 
+            if(Input.GetKeyDown(KeyCode.J))
+                Debug.Log("Ability 1 called");
+
+            if(Input.GetKeyDown(KeyCode.K))
+                Debug.Log("Ability 2 called");
+
         // }
     }
 
