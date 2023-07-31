@@ -24,6 +24,7 @@ public class PlayerMain : MonoBehaviour
     [HideInInspector] public static SendString PlaySFX;
 
     [HideInInspector] public static SendInt AgeRequested;
+    [HideInInspector] public static OnSomeEvent HourGlassFlipped;
 
     void OnEnable()
     {
@@ -49,6 +50,10 @@ public class PlayerMain : MonoBehaviour
         // if(CheckIsPlaying.Invoke())
         // {
             Move();
+
+            if(Input.GetKeyDown(KeyCode.H))
+                HourGlassFlipped?.Invoke();
+
         // }
     }
 
