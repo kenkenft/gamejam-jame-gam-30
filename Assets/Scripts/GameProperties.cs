@@ -9,10 +9,14 @@ public delegate void SendString(string value);
 public delegate bool ReturnBool();
 public delegate int ReturnInt();
 public enum AgeState
-    {
-        Young, Middle, Old, Dead 
-    };
+{
+    Young, Middle, Old, Dead 
+};
 
+public enum HourGlassInverted
+{
+    No, Yes
+}
 public class GameProperties
 {
     public static float PlayerSpeed;

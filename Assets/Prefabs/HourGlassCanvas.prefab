@@ -31,7 +31,7 @@ RectTransform:
   m_Children:
   - {fileID: 6612125241855071402}
   m_Father: {fileID: 6612125241492406919}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -297,7 +297,7 @@ RectTransform:
   m_Children:
   - {fileID: 6612125240317545663}
   m_Father: {fileID: 6612125241492406919}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -445,6 +445,7 @@ GameObject:
   - component: {fileID: 6612125241231394910}
   - component: {fileID: 6612125241231394911}
   - component: {fileID: 6612125241231394896}
+  - component: {fileID: 1462755439962856469}
   m_Layer: 0
   m_Name: HourGlassCanvas
   m_TagString: Untagged
@@ -534,6 +535,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1462755439962856469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6612125241231394898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de698bc7579961e4690bc0b58790b844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sands:
+  - {fileID: 6612125240185906304}
+  - {fileID: 6612125240894888060}
+  _isHourGlassInverted: 0
 --- !u!1 &6612125241424056850
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,8 +658,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6612125240894888061}
   - {fileID: 6612125240185906305}
+  - {fileID: 6612125240894888061}
   m_Father: {fileID: 6612125241114457022}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

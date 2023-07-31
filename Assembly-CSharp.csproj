@@ -45,6 +45,7 @@
      <Compile Include="Assets\Scripts\EnemyCollision.cs" />
      <Compile Include="Assets\Scripts\PlayerCollision.cs" />
      <Compile Include="Assets\Scripts\PlayerAge.cs" />
+     <Compile Include="Assets\Scripts\UIHourGlass.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

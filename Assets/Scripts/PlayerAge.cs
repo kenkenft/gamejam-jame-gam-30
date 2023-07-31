@@ -10,9 +10,11 @@ public class PlayerAge : MonoBehaviour
 
     [HideInInspector] public static ReturnBool CheckIsPaused;
     [HideInInspector] public static OnSomeEvent TriggerEndGame;
+    [HideInInspector] public static OnSomeEvent HourGlassFlipped;
 
     [HideInInspector] public static SendInt AgeChanged;
     [HideInInspector] public static ReturnInt AgeRequested;
+    [HideInInspector] public static SendFloat HourGlassUpdated;
     // Start is called before the first frame update
      
     void OnEnable()
@@ -46,6 +48,7 @@ public class PlayerAge : MonoBehaviour
             // {
                 _currentTime--;
                 // Debug.Log($"Time Left: {_currentTime}");
+                HourGlassUpdated?.Invoke((float)_currentTime/(float)_maxTime);
                 SetPlayerAge();
             // }
         }
@@ -79,6 +82,9 @@ public class PlayerAge : MonoBehaviour
 
     void FlipHourGlass()
     {
-        Debug.Log($"Hourglass flipped! Time left: {_currentTime}");
+        Debug.Log($"FlipHourGlass called!");
+        _currentTime = _maxTime - _currentTime;
+        HourGlassFlipped?.Invoke();
+        HourGlassUpdated?.Invoke((float)_currentTime/(float)_maxTime);
     }
 }
