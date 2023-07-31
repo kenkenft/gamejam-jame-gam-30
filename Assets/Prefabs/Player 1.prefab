@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 4589919386316722281}
   - component: {fileID: 4406522395545647594}
   - component: {fileID: 2085495338}
+  - component: {fileID: 3187414068758149332}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -179,7 +180,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -198,12 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerSpeed: 10
-  _playerJump: 10
-  _speedDecayMultiplier: 0.95
-  _jumpVelDecayHigh: 1.4
-  _jumpVelDecayLow: 1.9
   _isFacingRight: 1
-  _isAirborne: 0
   _isMovingSideways: 0
   PlayerRig: {fileID: 4775661858566513397}
   GroundLayerMask:
@@ -274,11 +270,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 779664547}
-  maxHealth: 100
-  currentHealth: 0
+  _maxHealth: 100
+  _currentHealth: 0
   _camera: {fileID: 0}
   _target: {fileID: 5180658571100134398}
   _offset: {x: 0, y: 0, z: 0}
+--- !u!114 &3187414068758149332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421046224150471586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33fb19505a49b24981650b0acbde300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerHealth: {fileID: 2085495338}
 --- !u!1001 &1154128689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -421,9 +430,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abbdd86e4fc0ca74a9c175c657188e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slider: {fileID: 0}
+  _slider: {fileID: 8510333501561619647}
 --- !u!224 &8510333501561619646 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8510333500550111119, guid: 21d832d124e79d342ae3d2d753e1951f, type: 3}
   m_PrefabInstance: {fileID: 1154128689}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8510333501561619647 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8510333500550111118, guid: 21d832d124e79d342ae3d2d753e1951f, type: 3}
+  m_PrefabInstance: {fileID: 1154128689}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8510333501561619645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
