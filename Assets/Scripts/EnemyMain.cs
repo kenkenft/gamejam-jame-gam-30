@@ -33,7 +33,7 @@ public class EnemyMain : MonoBehaviour
         }
     }
 
-    void SetUp()
+    public void SetUp()
     {
         ToggleObjectComponents(true);
         

@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerAge : MonoBehaviour
 {
     
-    [SerializeField] private int _maxTime = 41, _currentTime = 0;
+    [SerializeField] private int _maxTime = 60, _currentTime = 0, _enemySpawnTimer = 10;
     [HideInInspector] public static ReturnBool CheckIsPaused;
     [HideInInspector] public static OnSomeEvent TriggerEndGame;
     [HideInInspector] public static OnSomeEvent HourGlassFlipped;
+    [HideInInspector] public static OnSomeEvent SpawnTimerExpired;
 
     [HideInInspector] public static SendInt AgeChanged;
     [HideInInspector] public static ReturnInt AgeRequested;
@@ -44,6 +45,7 @@ public class PlayerAge : MonoBehaviour
             yield return GameProperties.timerDelay;
             // if(!CheckIsPaused.Invoke())
             // {
+                CheckSpawnTime();
                 _currentTime--;
                 // Debug.Log($"Time Left: {_currentTime}");
                 HourGlassUpdated?.Invoke((float)_currentTime/(float)_maxTime);
@@ -85,5 +87,16 @@ public class PlayerAge : MonoBehaviour
         _currentTime = _maxTime - _currentTime;
         HourGlassFlipped?.Invoke();
         HourGlassUpdated?.Invoke((float)_currentTime/(float)_maxTime);
+    }
+
+    void CheckSpawnTime()
+    {
+        if(_enemySpawnTimer > 0)
+             _enemySpawnTimer--;
+        else
+        {
+            SpawnTimerExpired?.Invoke();
+            _enemySpawnTimer = 10;
+        }
     }
 }
