@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAge : MonoBehaviour
 {
     
-    [SerializeField] private int _maxTime = 60, _currentTime = 0;
+    [SerializeField] private int _maxTime = 41, _currentTime = 0;
     [HideInInspector] public static ReturnBool CheckIsPaused;
     [HideInInspector] public static OnSomeEvent TriggerEndGame;
     [HideInInspector] public static OnSomeEvent HourGlassFlipped;

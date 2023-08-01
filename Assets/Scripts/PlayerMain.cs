@@ -120,6 +120,7 @@ public class PlayerMain : MonoBehaviour
     {
         _currentAge = (AgeState)ageEnum;
         Debug.Log($"Player age: {_currentAge}");
+        AttackScript.SetAbilities((int)_currentAge);
     }
 
     int GetPlayerAge()
