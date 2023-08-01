@@ -21,6 +21,7 @@ public class EnemyMain : MonoBehaviour
     {
         ToggleObjectComponents(true);
         
+
         _currentHealth = EnemyProperties.Health;
         _maxHealth = EnemyProperties.Health;
         _physicalDamagePercentage = EnemyProperties.PhysicalDamagePercentage;
@@ -30,6 +31,10 @@ public class EnemyMain : MonoBehaviour
         _face.sprite = EnemyProperties.Face;
         _collider.radius = _body.sprite.bounds.extents[0];
         
+        Vector2 spriteSize = _body.bounds.size;
+        Vector3 _maskY = new Vector3(0,spriteSize.y / 2f, 0);
+        Vector3 offset = new Vector3(0f, 1, 0f) + _maskY;
+        _healthBar.SetOffset(offset);
     }
 
     public float[] GetDamage()

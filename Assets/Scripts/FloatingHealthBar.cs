@@ -36,4 +36,9 @@ public class FloatingHealthBar : MonoBehaviour
     {
         gameObject.SetActive(state);
     }
+
+    public void SetOffset(Vector3 offset)
+    {
+        _offset = offset;
+    }
 }

@@ -14,6 +14,7 @@ public class PlayerMain : MonoBehaviour
 
     private Ray2D[] _rays;
     public LayerMask GroundLayerMask;
+    public PlayerHealth HealthScript;
 
     public PlayerAttack AttackScript;
 
@@ -45,6 +46,9 @@ public class PlayerMain : MonoBehaviour
         Vector2 spriteSize =  GetComponent<SpriteRenderer>().bounds.size;
         _maskX = new Vector3(spriteSize.x / 2f, 0, 0);
         _maskY = new Vector3(0,spriteSize.y / 2f, 0);
+        
+        Vector3 offset = new Vector3(0f, 1f, 0f) + _maskY;
+        HealthScript.SetOffset(offset);
     }
 
     void Update()

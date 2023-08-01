@@ -38,4 +38,9 @@ public class PlayerHealth : MonoBehaviour
     {
         return _maxHealth;
     }
+
+    public void SetOffset(Vector3 offset)
+    {
+        _healthBar.SetOffset(offset);
+    }
 }
