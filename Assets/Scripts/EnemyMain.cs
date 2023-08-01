@@ -7,16 +7,30 @@ public class EnemyMain : MonoBehaviour
     private float _currentHealth, _maxHealth, _physicalDamagePercentage, _timeDamagePercentage, _speed;
     [SerializeField] private SpriteRenderer _body, _face;
     public SOEnemy EnemyProperties;
+    [SerializeField] private Transform _player; 
 
     [SerializeField] private Rigidbody2D _rig;
     [SerializeField] private CircleCollider2D _collider;
     [SerializeField] private FloatingHealthBar _healthBar;
+    private Vector2 _moveDirection;
 
     [SerializeField] public static SendString PlaySFX;
 
     void Start()
     {
+        _rig = GetComponent<Rigidbody2D>();
         SetUp();
+    }
+
+    void Update()
+    {
+        if(_currentHealth > 0f)
+        {
+            Vector2 direction = (_player.position - transform.position).normalized;
+            _moveDirection = direction;
+            _rig.velocity = new Vector2(_moveDirection.x * _speed, _moveDirection.y *_speed);
+            // Debug.Log($"Move Direction: {_moveDirection}.Velocity: {_rig.velocity}");
+        }
     }
 
     void SetUp()
@@ -28,7 +42,7 @@ public class EnemyMain : MonoBehaviour
         _maxHealth = EnemyProperties.Health;
         _physicalDamagePercentage = EnemyProperties.PhysicalDamagePercentage;
         _timeDamagePercentage = EnemyProperties.TimeDamagePercentage;
-        _speed = GameProperties.PlayerSpeed * EnemyProperties.Speed;
+        _speed = 65f *  EnemyProperties.Speed;  //GameProperties.PlayerSpeed was 0, therefore enemySpeed was being set to zero.
         _body.sprite = EnemyProperties.Body;
         _face.sprite = EnemyProperties.Face;
         _collider.radius = _body.sprite.bounds.extents[0];
@@ -37,6 +51,8 @@ public class EnemyMain : MonoBehaviour
         Vector3 _maskY = new Vector3(0,spriteSize.y / 2f, 0);
         Vector3 offset = new Vector3(0f, 1, 0f) + _maskY;
         _healthBar.SetOffset(offset);
+
+        _player = FindObjectOfType<PlayerMain>().gameObject.transform;
     }
 
     public float[] GetDamage()
@@ -68,7 +84,7 @@ public class EnemyMain : MonoBehaviour
 
     void ToggleObjectComponents(bool state)
     {
-        _rig.isKinematic = state;
+        // _rig.isKinematic = state;
         _collider.enabled = state;
         _body.enabled = state;
         _face.enabled = state;
