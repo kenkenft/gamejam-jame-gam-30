@@ -10,6 +10,7 @@ public class EnemyMain : MonoBehaviour
 
     [SerializeField] private Rigidbody2D _rig;
     [SerializeField] private CircleCollider2D _collider;
+    [SerializeField] private FloatingHealthBar _healthBar;
 
     void Start()
     {
@@ -18,6 +19,8 @@ public class EnemyMain : MonoBehaviour
 
     void SetUp()
     {
+        ToggleObjectComponents(true);
+        
         _currentHealth = EnemyProperties.Health;
         _maxHealth = EnemyProperties.Health;
         _physicalDamagePercentage = EnemyProperties.PhysicalDamagePercentage;
@@ -26,6 +29,7 @@ public class EnemyMain : MonoBehaviour
         _body.sprite = EnemyProperties.Body;
         _face.sprite = EnemyProperties.Face;
         _collider.radius = _body.sprite.bounds.extents[0];
+        
     }
 
     public float[] GetDamage()
@@ -38,6 +42,24 @@ public class EnemyMain : MonoBehaviour
     {
         _currentHealth -= damage;
         Debug.Log($"{gameObject.name} received {damage} damage. {_currentHealth}/ {_maxHealth} left");
+        _currentHealth = Mathf.Clamp(_currentHealth, 0f, _maxHealth);
+        _healthBar.UpdateHealthBar(_currentHealth, _maxHealth);
 
+        if(_currentHealth <= 0f)
+        {
+            Debug.Log($"{gameObject.name} is dead");
+            ToggleObjectComponents(false);
+            // Play death animation;
+        }
+
+    }
+
+    void ToggleObjectComponents(bool state)
+    {
+        _rig.isKinematic = state;
+        _collider.enabled = state;
+        _body.enabled = state;
+        _face.enabled = state;
+        _healthBar.ToggleHealthBar(state);
     }
 }

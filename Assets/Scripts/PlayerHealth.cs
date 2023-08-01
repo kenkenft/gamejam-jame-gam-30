@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private FloatingHealthBar _healthBar;
     [SerializeField] private float _maxHealth = 100f, _currentHealth;
-    [SerializeField] private Camera _camera;
-    [SerializeField] private Transform _target;
-    [SerializeField] private Vector3 _offset;
 
     void Start()
     {
@@ -35,11 +33,6 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        transform.rotation = _camera.transform.rotation;
-        transform.position = _target.position + _offset; 
-    }
 
     public float GetMaxHealth()
     {
