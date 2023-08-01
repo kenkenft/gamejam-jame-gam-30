@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Medium Gear
   Health: 20
-  PhysicalDamagePercentage: 10
+  PhysicalDamagePercentage: 2
   TimeDamagePercentage: 0
   Speed: 1
   Body: {fileID: -1841511682, guid: 948a3c95d831391409ef46c9018d530c, type: 3}

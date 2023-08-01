@@ -56,6 +56,7 @@ public class EnemySpawner : MonoBehaviour
         _tmpObj.name = "Enemy Prefab " + _pooledObjsList.Count;
         _tmpObj.transform.parent = transform;
         EnableEnemyComponents(isActive);
+        _tmpObj.GetComponent<EnemyMain>().SetUp();
         _pooledObjsList.Add(_tmpObj);
     }
 
@@ -114,12 +115,12 @@ public class EnemySpawner : MonoBehaviour
         _tempInt =  Random.Range(0,100);
         Debug.Log("_tempInt: " + _tempInt);
 
-        if(_tempInt > 80)
+        if(_tempInt > 90)
         {    
             Debug.Log("Large gear!: " + (EnemyTypes.Length-1));
             return EnemyTypes[EnemyTypes.Length-1];
         }
-        else if (_tempInt <= 80 && _tempInt > 50)
+        else if (_tempInt <= 90 && _tempInt > 70)
         {    
             Debug.Log("Medium gear!: " + (EnemyTypes.Length-1));
             return EnemyTypes[1];

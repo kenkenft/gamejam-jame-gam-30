@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Big Gear
   Health: 40
-  PhysicalDamagePercentage: 20
+  PhysicalDamagePercentage: 5
   TimeDamagePercentage: 2
   Speed: 0.9
   Body: {fileID: 1002729460, guid: 9406a5a4085f5aa40a12d8fc71c5edf0, type: 3}

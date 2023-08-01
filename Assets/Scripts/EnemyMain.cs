@@ -19,7 +19,32 @@ public class EnemyMain : MonoBehaviour
     void Start()
     {
         _rig = GetComponent<Rigidbody2D>();
+        _healthBar.SetUp();
         SetUp();
+    }
+
+    
+
+    public void SetUp()
+    {
+        ToggleObjectComponents(true);
+        
+
+        _currentHealth = EnemyProperties.Health;
+        _maxHealth = EnemyProperties.Health;
+        _physicalDamagePercentage = EnemyProperties.PhysicalDamagePercentage;
+        _timeDamagePercentage = EnemyProperties.TimeDamagePercentage;
+        _speed = 9f *  EnemyProperties.Speed;  //GameProperties.PlayerSpeed was 0, therefore enemySpeed was being set to zero.
+        _body.sprite = EnemyProperties.Body;
+        _face.sprite = EnemyProperties.Face;
+        _collider.radius = _body.sprite.bounds.extents[0];
+        
+        Vector2 spriteSize = _body.bounds.size;
+        Vector3 _maskY = new Vector3(0,spriteSize.y / 2f, 0);
+        Vector3 offset = new Vector3(0f, 1, 0f) + _maskY;
+        _healthBar.SetOffset(offset);
+
+        _player = FindObjectOfType<PlayerMain>().gameObject.transform;
     }
 
     void Update()
@@ -31,28 +56,6 @@ public class EnemyMain : MonoBehaviour
             _rig.velocity = new Vector2(_moveDirection.x * _speed, _moveDirection.y *_speed);
             // Debug.Log($"Move Direction: {_moveDirection}.Velocity: {_rig.velocity}");
         }
-    }
-
-    public void SetUp()
-    {
-        ToggleObjectComponents(true);
-        
-
-        _currentHealth = EnemyProperties.Health;
-        _maxHealth = EnemyProperties.Health;
-        _physicalDamagePercentage = EnemyProperties.PhysicalDamagePercentage;
-        _timeDamagePercentage = EnemyProperties.TimeDamagePercentage;
-        _speed = 65f *  EnemyProperties.Speed;  //GameProperties.PlayerSpeed was 0, therefore enemySpeed was being set to zero.
-        _body.sprite = EnemyProperties.Body;
-        _face.sprite = EnemyProperties.Face;
-        _collider.radius = _body.sprite.bounds.extents[0];
-        
-        Vector2 spriteSize = _body.bounds.size;
-        Vector3 _maskY = new Vector3(0,spriteSize.y / 2f, 0);
-        Vector3 offset = new Vector3(0f, 1, 0f) + _maskY;
-        _healthBar.SetOffset(offset);
-
-        _player = FindObjectOfType<PlayerMain>().gameObject.transform;
     }
 
     public float[] GetDamage()

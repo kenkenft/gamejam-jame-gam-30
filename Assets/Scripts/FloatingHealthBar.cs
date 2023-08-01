@@ -11,9 +11,10 @@ public class FloatingHealthBar : MonoBehaviour
     [SerializeField] private Transform _target;
     [SerializeField] private Vector3 _offset;
 
-    void SetUp()
+    public void SetUp()
     {
         _camera = FindObjectOfType<Camera>();
+        _canvas = GetComponentInParent<Canvas>();
         _canvas.worldCamera = _camera;
     }
 
