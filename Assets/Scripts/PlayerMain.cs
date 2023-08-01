@@ -8,7 +8,7 @@ public class PlayerMain : MonoBehaviour
     private float _playerSpeed = 10f;
 
     [SerializeField] private bool _isFacingRight = true, _isMovingSideways = false;
-    private Vector2 _moveXY = new Vector2(0f, 0f);
+    private Vector2 _moveXY = new Vector2(0f, 0f), _currentDirection;
     private Vector3 _maskX, _maskY;
     public Rigidbody2D PlayerRig;
 
@@ -46,9 +46,11 @@ public class PlayerMain : MonoBehaviour
         Vector2 spriteSize =  GetComponent<SpriteRenderer>().bounds.size;
         _maskX = new Vector3(spriteSize.x / 2f, 0, 0);
         _maskY = new Vector3(0,spriteSize.y / 2f, 0);
+        _currentDirection = _moveXY;
         
         Vector3 offset = new Vector3(0f, 1f, 0f) + _maskY;
         HealthScript.SetOffset(offset);
+        AttackScript.SetAbilities((int)_currentAge);
     }
 
     void Update()
@@ -61,7 +63,7 @@ public class PlayerMain : MonoBehaviour
                 HourGlassFlipped?.Invoke();
 
             if(Input.GetKeyDown(KeyCode.J))
-                AttackScript.CallAbility();
+                AttackScript.Attack(_currentDirection);
 
             if(Input.GetKeyDown(KeyCode.K))
                 Debug.Log("Ability 2 called");
@@ -78,6 +80,9 @@ public class PlayerMain : MonoBehaviour
 
         if( _moveXY[0] !=0 || _moveXY[1] !=0)
             PlayerRig.velocity = _moveXY;
+
+        if( _moveXY[0] != 0 && _moveXY[1] !=0)
+            _currentDirection = _moveXY;
     }
 
     public bool IsGrounded()
