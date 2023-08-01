@@ -15,6 +15,8 @@ public class PlayerMain : MonoBehaviour
     private Ray2D[] _rays;
     public LayerMask GroundLayerMask;
 
+    public PlayerAttack AttackScript;
+
     [SerializeField] private AgeState _currentAge = AgeState.Young;
 
     // public Animator animator;
@@ -55,7 +57,7 @@ public class PlayerMain : MonoBehaviour
                 HourGlassFlipped?.Invoke();
 
             if(Input.GetKeyDown(KeyCode.J))
-                Debug.Log("Ability 1 called");
+                AttackScript.CallAbility();
 
             if(Input.GetKeyDown(KeyCode.K))
                 Debug.Log("Ability 2 called");

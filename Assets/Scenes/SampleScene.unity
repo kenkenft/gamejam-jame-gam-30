@@ -348,6 +348,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4589919386316722281, guid: b2dc22b75fe6ec046b978660d0d3ca27, type: 3}
+      propertyPath: AttackScript
+      value: 
+      objectReference: {fileID: 2085495341}
     - target: {fileID: 5180658571100134398, guid: b2dc22b75fe6ec046b978660d0d3ca27, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -558,6 +562,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxTime: 60
   _currentTime: 0
+--- !u!114 &2085495341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085495332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed4cde2ae6f7cd54ba3faee429c82172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2131802713 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6612125240317545662, guid: d402aeca487d8b540b30b13296f9b22a, type: 3}
