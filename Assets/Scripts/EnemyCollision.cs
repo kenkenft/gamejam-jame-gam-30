@@ -10,4 +10,9 @@ public class EnemyCollision : MonoBehaviour
     {
         return _enemyMain.GetDamage();
     }
+
+    public void ReceiveDamage(float damage)
+    {
+        _enemyMain.ReceiveDamage(damage);
+    }
 }

@@ -36,17 +36,17 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\PlayerMain.cs" />
      <Compile Include="Assets\Scripts\PlayerHealth.cs" />
-     <Compile Include="Assets\Scripts\FloatingHealthBar.cs" />
-     <Compile Include="Assets\Scripts\GameProperties.cs" />
      <Compile Include="Assets\Scripts\SOEnemy.cs" />
-     <Compile Include="Assets\Scripts\EnemyMain.cs" />
-     <Compile Include="Assets\Scripts\EnemyCollision.cs" />
      <Compile Include="Assets\Scripts\PlayerCollision.cs" />
-     <Compile Include="Assets\Scripts\PlayerAge.cs" />
      <Compile Include="Assets\Scripts\UIHourGlass.cs" />
      <Compile Include="Assets\Scripts\PlayerAttack.cs" />
+     <Compile Include="Assets\Scripts\EnemyCollision.cs" />
+     <Compile Include="Assets\Scripts\PlayerMain.cs" />
+     <Compile Include="Assets\Scripts\PlayerAge.cs" />
+     <Compile Include="Assets\Scripts\GameProperties.cs" />
+     <Compile Include="Assets\Scripts\EnemyMain.cs" />
+     <Compile Include="Assets\Scripts\FloatingHealthBar.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

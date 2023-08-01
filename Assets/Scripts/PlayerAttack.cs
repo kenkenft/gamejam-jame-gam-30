@@ -21,10 +21,15 @@ public class PlayerAttack : MonoBehaviour
         // ToDo created a ContactFilter2D that only returns a collision if object is on Enemy layer. At the moment, it's hitting the player
             // Or maybe just filter by tag
             
-        if (results > 0) 
+        if(results > 0) 
         {    
             foreach(RaycastHit2D hit in listOfHitObjects)
-                Debug.Log(hit.collider.gameObject.name);
+            {
+                if(hit.collider.gameObject.tag == "Enemy")
+                {
+                    hit.collider.gameObject.GetComponent<EnemyCollision>().ReceiveDamage(5f);
+                }
+            }
             // ToDo call method that applies damage to hit targets
         }
     }
