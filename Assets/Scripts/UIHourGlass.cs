@@ -9,6 +9,7 @@ public class UIHourGlass : MonoBehaviour
     [SerializeField] private HourGlassInverted _isHourGlassInverted;
     [SerializeField] private Canvas _hourGlass;
     [SerializeField] private Image[] _sandsImages;
+    [SerializeField] public static SendString PlaySFX;
 
     void OnEnable()
     {
@@ -70,6 +71,7 @@ public class UIHourGlass : MonoBehaviour
     public IEnumerator RotateHourGlass()
     {
         float startTime = Time.time, currentTime = Time.time;
+        PlaySFX?.Invoke("Flip");
         while(currentTime - startTime < 0.5f)
         {
             yield return null;

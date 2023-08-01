@@ -8,23 +8,30 @@ public class PlayerAttack : MonoBehaviour
     RaycastHit2D m_Hit;
     [SerializeField] private Vector2 _currentDirection = new Vector2(1f, 1f), _currentAttackArea;
     [SerializeField] private float _currentAttackDistance = 0f, _currentAttackDamage = 0f; 
+    private string _currentAttackSFX;
     private List<Vector2> _attackAreas = new List<Vector2>
     {
-        new Vector2(1f,1f), new Vector2(2f,2f), new Vector2(5f,5f), new Vector2(1f,1f)
+        new Vector2(2f,2f), new Vector2(3f,3f), new Vector2(5f,5f), new Vector2(1f,1f)
     };
 
     private List<float> _attackDistances = new List<float>
     {
-        2f, 3f, 4f, 1f
+        3f, 4f, 5f, 1f
     };
 
     private List<float> _attackDamageValues = new List<float>
     {
         5f, 7f, 20f, 1f
     };
+
+    private List<string> _attackSFXs = new List<string>
+    {
+        "AttackYoung", "AttackMiddle", "AttackOld", "AttackYoung"
+    };
     private ContactFilter2D _dummy;
 
     [HideInInspector] public static OnSomeEvent SupportAbilityCalled;
+    [SerializeField] public static SendString PlaySFX;
 
     
     public void Attack(Vector2 direction)
@@ -50,6 +57,8 @@ public class PlayerAttack : MonoBehaviour
         }
         else
             m_HitDetect = false;
+
+        PlaySFX?.Invoke(_currentAttackSFX);
     }
 
     public void SetAbilities(int ageState)
@@ -59,6 +68,7 @@ public class PlayerAttack : MonoBehaviour
         _currentAttackArea = _attackAreas[ageState];
         _currentAttackDamage = _attackDamageValues[ageState];
         _currentAttackDistance = _attackDistances[ageState];
+        _currentAttackSFX = _attackSFXs[ageState];
         // SupportAbilityCalled = _supportAbilities[ageState];
     }
 

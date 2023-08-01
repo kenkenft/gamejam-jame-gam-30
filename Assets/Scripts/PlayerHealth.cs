@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private FloatingHealthBar _healthBar;
     [SerializeField] private float _maxHealth = 100f, _currentHealth;
+    [SerializeField] public static SendString PlaySFX;
 
     void Start()
     {
@@ -26,9 +27,13 @@ public class PlayerHealth : MonoBehaviour
         _currentHealth = Mathf.Clamp(_currentHealth, 0f, _maxHealth);
         _healthBar.UpdateHealthBar(_currentHealth, _maxHealth);
 
+        if(amount < 0f)
+            PlaySFX?.Invoke("PlayerHit");
+
         if(_currentHealth <= 0f)
         {
             Debug.Log("Player is dead");
+            PlaySFX?.Invoke("GameOver");
             // ToDo Trigger endgame
         }
     }

@@ -13,6 +13,7 @@ public class PlayerAge : MonoBehaviour
     [HideInInspector] public static SendInt AgeChanged;
     [HideInInspector] public static ReturnInt AgeRequested;
     [HideInInspector] public static SendFloat HourGlassUpdated;
+    [SerializeField] public static SendString PlaySFX;
      
     void OnEnable()
     {
@@ -50,6 +51,7 @@ public class PlayerAge : MonoBehaviour
             // }
         }
         StopCoroutine("Countdown");
+        PlaySFX?.Invoke("GameOver");
         // gameManager.TriggerEndgame();
         // TriggerEndGame?.Invoke();
         yield return null;

@@ -12,6 +12,8 @@ public class EnemyMain : MonoBehaviour
     [SerializeField] private CircleCollider2D _collider;
     [SerializeField] private FloatingHealthBar _healthBar;
 
+    [SerializeField] public static SendString PlaySFX;
+
     void Start()
     {
         SetUp();
@@ -53,8 +55,13 @@ public class EnemyMain : MonoBehaviour
         if(_currentHealth <= 0f)
         {
             Debug.Log($"{gameObject.name} is dead");
+            PlaySFX?.Invoke("EnemyDead");
             ToggleObjectComponents(false);
             // Play death animation;
+        }
+        else
+        {
+            PlaySFX?.Invoke("EnemyHit");
         }
 
     }
