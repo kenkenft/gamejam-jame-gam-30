@@ -23,12 +23,14 @@ public class PlayerAge : MonoBehaviour
     void OnEnable()
     {
         PlayerMain.HourGlassFlipped = FlipHourGlass;
+        PlayerHealth.PlayerDied += StopCountdown;
         UIManager.StartGameSetUp += SetUp;
     }
 
     void Disable()
     {
         PlayerMain.HourGlassFlipped = null;
+        PlayerHealth.PlayerDied -= StopCountdown;
         UIManager.StartGameSetUp -= SetUp;
     }
 
@@ -126,5 +128,11 @@ public class PlayerAge : MonoBehaviour
             SpawnTimerExpired?.Invoke();
             _enemySpawnTimer = 10;
         }
+    }
+
+    void StopCountdown()
+    {
+        StopAllCoroutines();
+        SurvivalTimeRequested?.Invoke(_timeSurvived);
     }
 }

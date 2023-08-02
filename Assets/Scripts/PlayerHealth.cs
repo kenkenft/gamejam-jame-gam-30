@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float _maxHealth = 100f, _currentHealth, _lastTimeHit = 0f;
     [SerializeField] public static SendString PlaySFX;
     [HideInInspector] public static OnSomeEvent TriggerEndGame;
+    [HideInInspector] public static OnSomeEvent PlayerDied;
 
     void OnEnable()
     {
@@ -51,7 +52,7 @@ public class PlayerHealth : MonoBehaviour
         {
             // Debug.Log("Player is dead");
             PlaySFX?.Invoke("GameOver");
-            StopCoroutine("Countdown");
+            PlayerDied?.Invoke();
             TriggerEndGame?.Invoke();
         }
     }

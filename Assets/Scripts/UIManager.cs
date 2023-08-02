@@ -37,11 +37,11 @@ public class UIManager : MonoBehaviour
     void Disable()
     {
         PlayerMain.TogglePauseUI -= PauseGame;
-        PlayerMain.CheckIsPlaying += GetIsPlaying;
+        PlayerMain.CheckIsPlaying -= GetIsPlaying;
         PlayerAge.CheckIsPaused -= GetIsPaused;
         PlayerAge.TriggerEndGame -= TriggerEndGame;
         PlayerAge.SurvivalTimeRequested -= GetSurvivalTime;
-        PlayerHealth.TriggerEndGame += TriggerEndGame;
+        PlayerHealth.TriggerEndGame -= TriggerEndGame;
     }
 
     void Start()
@@ -122,19 +122,19 @@ public class UIManager : MonoBehaviour
             else
                 _instructionTextArray[i].SetActive(false);
         }
-        PlaySFX?.Invoke("Pickup");
+        PlaySFX?.Invoke("PickUp");
     }
 
     public void PlayGame()
     {
         Time.timeScale = 1;
-        Debug.Log("Play button pressed!");
+        // Debug.Log("Play button pressed!");
         ToggleCanvas("HourGlassCanvas");
         
         _isPlaying = true;
         _isPaused = false;
         StartGameSetUp?.Invoke();
-        PlaySFX?.Invoke("Pickup");
+        PlaySFX?.Invoke("PickUp");
     }
 
     public void PauseGame()
@@ -144,14 +144,14 @@ public class UIManager : MonoBehaviour
                 _pauseCanvas.gameObject.SetActive(true);
                 Time.timeScale = 0;
                 _isPaused = true;
-                PlaySFX?.Invoke("Pickup");
+                PlaySFX?.Invoke("PickUp");
             }
             else
             {
                 _pauseCanvas.gameObject.SetActive(false);
                 Time.timeScale = 1;
                 _isPaused = false;
-                PlaySFX?.Invoke("Pickup");
+                PlaySFX?.Invoke("PickUp");
             }
     }
 
@@ -194,7 +194,7 @@ public class UIManager : MonoBehaviour
         _isPaused = false;
         _textIndexPointer = 0;
         AdvanceInstructionText();
-        PlaySFX?.Invoke("Pickup");
+        PlaySFX?.Invoke("PickUp");
     }
 
     void GetSurvivalTime(int survivalTime)

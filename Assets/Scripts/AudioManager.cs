@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour
     void OnEnable()
     {
         PlayerMain.PlaySFX += PlaySound;
-        // UIManager.PlaySFX += PlaySound;
+        UIManager.PlaySFX += PlaySound;
         PlayerAttack.PlaySFX += PlaySound;
         PlayerAge.PlaySFX += PlaySound;
         PlayerHealth.PlaySFX += PlaySound;
@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
     void OnDisable()
     {
         PlayerMain.PlaySFX -= PlaySound;
-        // UIManager.PlaySFX -= PlaySound;
+        UIManager.PlaySFX -= PlaySound;
         PlayerAttack.PlaySFX -= PlaySound;
         PlayerAge.PlaySFX -= PlaySound;
         PlayerHealth.PlaySFX -= PlaySound;

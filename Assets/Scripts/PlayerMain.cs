@@ -64,6 +64,7 @@ public class PlayerMain : MonoBehaviour
     {
         AttackScript.SetAbilities((int)_currentAge);
         _chargesLeft = 1;
+        ChargeUsed?.Invoke(_chargesLeft);
         _isFlipOccurring = false;
     }
 
