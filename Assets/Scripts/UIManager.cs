@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text[] _resultsUITextArray;
 
     [HideInInspector] public static OnSomeEvent StartGameSetUp;
+    [HideInInspector] public static OnSomeEvent FieldCleared;
     [HideInInspector] public static ReturnInt GetFinalScore;
 
     [HideInInspector] public static SendString PlaySFX;
@@ -164,6 +165,7 @@ public class UIManager : MonoBehaviour
     
     public void TriggerEndGame()
     {
+        FieldCleared?.Invoke();
         int score = GetFinalScore.Invoke(), colorTagIndex = 0;
         string[] colorTag = {"<color=#000000>", "<color=#ffffff>", "<color=#ffffff>"};
         string tempString = score.ToString();//, results; 

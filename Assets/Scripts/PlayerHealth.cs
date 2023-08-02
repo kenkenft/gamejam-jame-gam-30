@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private FloatingHealthBar _healthBar;
-    [SerializeField] private float _maxHealth = 100f, _currentHealth;
+    [SerializeField] private float _maxHealth = 100f, _currentHealth, _lastTimeHit = 0f;
     [SerializeField] public static SendString PlaySFX;
     [HideInInspector] public static OnSomeEvent TriggerEndGame;
 
@@ -29,17 +29,23 @@ public class PlayerHealth : MonoBehaviour
     {
         _currentHealth = _maxHealth;
         _healthBar.UpdateHealthBar(_currentHealth, _maxHealth);
+        _lastTimeHit = Time.time;
     }
 
     public void ModifyHealth(float amount)
     {
+        if(amount > 0f || (amount < 0f && Time.time -_lastTimeHit > 3f))
+        {    
+            if(amount < 0f)
+            {    
+                _lastTimeHit = Time.time;
+                PlaySFX?.Invoke("PlayerHit");
+            }
+            _currentHealth += amount;    // If amount is positive, then it is healing; if amount is negative, then it is damage
+            _currentHealth = Mathf.Clamp(_currentHealth, 0f, _maxHealth);
+            _healthBar.UpdateHealthBar(_currentHealth, _maxHealth);
+        }
         // Debug.Log($"amount: {amount}");
-        _currentHealth += amount;    // If amount is positive, then it is healing; if amount is negative, then it is damage
-        _currentHealth = Mathf.Clamp(_currentHealth, 0f, _maxHealth);
-        _healthBar.UpdateHealthBar(_currentHealth, _maxHealth);
-
-        if(amount < 0f)
-            PlaySFX?.Invoke("PlayerHit");
 
         if(_currentHealth <= 0f)
         {

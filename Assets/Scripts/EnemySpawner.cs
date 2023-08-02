@@ -19,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
     void OnEnable()
     {
         UIManager.StartGameSetUp += GameStartSetUp;
+        UIManager.FieldCleared += ClearField;
         PlayerAge.SpawnTimerExpired += SpawnEnemyOnField;
         // Timer.CheckCoinsDespawn += UpdateCoinDespawnTimers;
     }
@@ -26,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
     void OnDisable()
     {
         UIManager.StartGameSetUp -= GameStartSetUp;
+        UIManager.FieldCleared -= ClearField;
         PlayerAge.SpawnTimerExpired -= SpawnEnemyOnField;
         // Timer.CheckCoinsDespawn -= UpdateCoinDespawnTimers;
     }
@@ -132,7 +134,7 @@ public class EnemySpawner : MonoBehaviour
         }
     } 
 
-    private void ClearField()
+    public void ClearField()
     {
         foreach(GameObject enemy in _pooledObjsList)
         {

@@ -45,6 +45,7 @@ public class EnemyMain : MonoBehaviour
         _player = FindObjectOfType<PlayerMain>().gameObject.transform;
         _rig = GetComponent<Rigidbody2D>();
         _healthBar.SetUp();
+        _healthBar.UpdateHealthBar(_currentHealth, _maxHealth);
     }
 
     void Update()
@@ -67,13 +68,13 @@ public class EnemyMain : MonoBehaviour
     public void ReceiveDamage(float damage)
     {
         _currentHealth -= damage;
-        Debug.Log($"{gameObject.name} received {damage} damage. {_currentHealth}/ {_maxHealth} left");
+        // Debug.Log($"{gameObject.name} received {damage} damage. {_currentHealth}/ {_maxHealth} left");
         _currentHealth = Mathf.Clamp(_currentHealth, 0f, _maxHealth);
         _healthBar.UpdateHealthBar(_currentHealth, _maxHealth);
 
         if(_currentHealth <= 0f)
         {
-            Debug.Log($"{gameObject.name} is dead");
+            // Debug.Log($"{gameObject.name} is dead");
             PlaySFX?.Invoke("EnemyDead");
             ToggleObjectComponents(false);
             // Play death animation;
