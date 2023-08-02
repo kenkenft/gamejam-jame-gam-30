@@ -385,6 +385,12 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     loop: 0
+  - name: AgeChange
+    clip: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
 --- !u!1 &878065098
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,6 +942,10 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 2085495348}
+    - target: {fileID: 4406522395545647594, guid: b2dc22b75fe6ec046b978660d0d3ca27, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1791724873, guid: f0462ec70c99e8943ba2ab745f10f352, type: 3}
     - target: {fileID: 4421046224150471586, guid: b2dc22b75fe6ec046b978660d0d3ca27, type: 3}
       propertyPath: m_Name
       value: Player 1
@@ -948,6 +958,14 @@ PrefabInstance:
       propertyPath: HealthScript
       value: 
       objectReference: {fileID: 2085495343}
+    - target: {fileID: 4720681283332808252, guid: b2dc22b75fe6ec046b978660d0d3ca27, type: 3}
+      propertyPath: m_Size.x
+      value: 2.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720681283332808252, guid: b2dc22b75fe6ec046b978660d0d3ca27, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5180658571100134398, guid: b2dc22b75fe6ec046b978660d0d3ca27, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1191,6 +1209,11 @@ MonoBehaviour:
   _maxTime: 60
   _currentTime: 0
   _enemySpawnTimer: 10
+  PlayerFaces:
+  - {fileID: -1791724873, guid: f0462ec70c99e8943ba2ab745f10f352, type: 3}
+  - {fileID: 339416857, guid: bd6d424550cf2f548bdab74bb3076d5c, type: 3}
+  - {fileID: -1987037164, guid: 747bb6d70fd562d4c9799207885e4f58, type: 3}
+  - {fileID: 1656647506, guid: b5e5e9aafddc02342ac742ce674c0cfd, type: 3}
 --- !u!114 &2085495341
 MonoBehaviour:
   m_ObjectHideFlags: 0

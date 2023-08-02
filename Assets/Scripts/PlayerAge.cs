@@ -6,6 +6,8 @@ public class PlayerAge : MonoBehaviour
 {
     
     [SerializeField] private int _maxTime = 60, _currentTime = 0, _enemySpawnTimer = 10;
+    public Sprite[] PlayerFaces;
+    private SpriteRenderer _face;
     [HideInInspector] public static ReturnBool CheckIsPaused;
     [HideInInspector] public static OnSomeEvent TriggerEndGame;
     [HideInInspector] public static OnSomeEvent HourGlassFlipped;
@@ -33,6 +35,7 @@ public class PlayerAge : MonoBehaviour
 
     void SetUp()
     {
+        _face = GetComponent<SpriteRenderer>();
         _currentTime = _maxTime;
         StartCoroutine("Countdown");
     }
@@ -65,20 +68,36 @@ public class PlayerAge : MonoBehaviour
         if(_currentTime > 40)
         {    
             if(AgeRequested.Invoke() != (int)AgeState.Young)
+            {    
+                _face.sprite = PlayerFaces[(int)AgeState.Young];
                 AgeChanged?.Invoke((int)AgeState.Young);
+                PlaySFX?.Invoke("AgeChange");
+            }
         }
         else if(_currentTime > 20 && _currentTime <= 40)
         {
             if(AgeRequested.Invoke() != (int)AgeState.Middle)
+            {
+                _face.sprite = PlayerFaces[(int)AgeState.Middle];
                 AgeChanged?.Invoke((int)AgeState.Middle);
+                PlaySFX?.Invoke("AgeChange");
+            }
         }
         else if(_currentTime > 0 && _currentTime <= 20)
         {
             if(AgeRequested.Invoke() != (int)AgeState.Old)
+            {    
+                _face.sprite = PlayerFaces[(int)AgeState.Old];
                 AgeChanged?.Invoke((int)AgeState.Old);
+                PlaySFX?.Invoke("AgeChange");
+            }
         }
         else
+        {
+            _face.sprite = PlayerFaces[(int)AgeState.Dead];
             AgeChanged?.Invoke((int)AgeState.Dead);
+        }
+        
     }
 
     void FlipHourGlass()
