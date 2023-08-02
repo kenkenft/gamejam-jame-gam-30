@@ -23,6 +23,7 @@ public class PlayerMain : MonoBehaviour
     // public Animator animator;
 
     [HideInInspector] public static ReturnBool CheckIsPlaying;
+    [HideInInspector] public static OnSomeEvent TogglePauseUI;
 
     [HideInInspector] public static SendString PlaySFX;
 
