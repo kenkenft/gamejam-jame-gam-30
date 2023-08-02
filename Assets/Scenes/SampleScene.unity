@@ -723,12 +723,23 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4861858850407877158, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861858850407877158, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4861858850407877159, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
       propertyPath: m_Text
       value: "Tips:\n- Your character's <color=#feae34>age</color> will depend on
         the remaining time in the <color=#feae34>hourglass</color>\n- Your <color=#feae34>age</color>
         will affect your <color=#feae34>attacks</color> \n- <color=#feae34>Flipping</color>
-        the hourglass will reverse expended time into remaining time and vice versa."
+        the hourglass will reverse expended time into remaining time and vice versa.\n-
+        Flipping the hourglass consumes charges. You can hold up to <color=#feae34>3</color>
+        flip charges.\n- <color=#feae34>Bonus points</color> are awarded for picking
+        up charges whilst already carrying 3 charges."
       objectReference: {fileID: 0}
     - target: {fileID: 6336699632618823147, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
       propertyPath: m_OverridePixelPerfect
@@ -793,30 +804,6 @@ PrefabInstance:
     - target: {fileID: 6420128005810695909, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7943435848829644883, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7943435848829644883, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7943435848829644883, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7943435848829644883, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7943435848829644883, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -390
-      objectReference: {fileID: 0}
-    - target: {fileID: 7943435848829644883, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 325
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}

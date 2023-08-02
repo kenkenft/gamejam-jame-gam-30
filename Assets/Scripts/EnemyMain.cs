@@ -104,7 +104,7 @@ public class EnemyMain : MonoBehaviour
     void SpawnItem()
     {
         int randomInt = Random.Range(1,100);
-        if(randomInt > 0)
+        if(randomInt > 95)
             ItemDropped?.Invoke(gameObject.transform.position);
     }
 }
