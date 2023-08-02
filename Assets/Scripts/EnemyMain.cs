@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyMain : MonoBehaviour
 {
+    private int _pointValue;
     private float _currentHealth, _maxHealth, _physicalDamagePercentage, _timeDamagePercentage, _speed;
     [SerializeField] private SpriteRenderer _body, _face;
     public SOEnemy EnemyProperties;
@@ -15,6 +16,7 @@ public class EnemyMain : MonoBehaviour
     private Vector2 _moveDirection;
 
     [SerializeField] public static SendString PlaySFX;
+    [SerializeField] public static SendInt EnemyDied;
 
     // void Start()
     // {
@@ -36,6 +38,7 @@ public class EnemyMain : MonoBehaviour
         _body.sprite = EnemyProperties.Body;
         _face.sprite = EnemyProperties.Face;
         _collider.radius = _body.sprite.bounds.extents[0];
+        _pointValue = EnemyProperties.PointValue;
         
         Vector2 spriteSize = _body.bounds.size;
         Vector3 _maskY = new Vector3(0,spriteSize.y / 2f, 0);
@@ -75,6 +78,7 @@ public class EnemyMain : MonoBehaviour
         if(_currentHealth <= 0f)
         {
             // Debug.Log($"{gameObject.name} is dead");
+            EnemyDied?.Invoke(_pointValue);
             PlaySFX?.Invoke("EnemyDead");
             ToggleObjectComponents(false);
             // Play death animation;

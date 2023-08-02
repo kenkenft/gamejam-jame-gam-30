@@ -166,8 +166,8 @@ public class UIManager : MonoBehaviour
     public void TriggerEndGame()
     {
         FieldCleared?.Invoke();
-        int score = GetFinalScore.Invoke(), colorTagIndex = 0;
-        string[] colorTag = {"<color=#000000>", "<color=#ffffff>", "<color=#ffffff>"};
+        int score = GetFinalScore.Invoke();// colorTagIndex = 0;
+        // string[] colorTag = {"<color=#000000>", "<color=#ffffff>", "<color=#ffffff>"};
         string tempString = score.ToString();//, results; 
         ToggleCanvas("ResultsCanvas");
         _isPlaying = false;
@@ -192,7 +192,8 @@ public class UIManager : MonoBehaviour
         // }
 
         // ResultsPanelImage.sprite = EndResultImages[colorTagIndex];
-        _resultsUITextArray[0].text = colorTag[colorTagIndex] + tempString + "</color>";
+         _resultsUITextArray[0].text = tempString;
+        // _resultsUITextArray[0].text = colorTag[colorTagIndex] + tempString + "</color>";
         // _resultsUITextArray[1].text = colorTag[colorTagIndex] + results + "</color>";
         // _resultsUITextArray[2].text = colorTag[colorTagIndex] + _resultsUITextArray[2].text.ToString() + "</color>";
         // _resultsUITextArray[3].text = colorTag[colorTagIndex] + _resultsUITextArray[3].text.ToString() + "</color>";

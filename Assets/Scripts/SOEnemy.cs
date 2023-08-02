@@ -9,5 +9,6 @@ public class SOEnemy : ScriptableObject
     public float Health, PhysicalDamagePercentage, TimeDamagePercentage, Speed;
     public Sprite Body, Face;
     public bool CanDamageTime;
+    public int PointValue; 
     
 }

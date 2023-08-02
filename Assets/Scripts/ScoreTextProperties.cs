@@ -13,12 +13,14 @@ public class ScoreTextProperties : MonoBehaviour
     {
         // PlayerStorage.DepositCoin += UpdateScore;
         UIManager.GetFinalScore += GetCurrentScore;
+        EnemyMain.EnemyDied += UpdateScore;
     }
 
     void OnDisable()
     {
         // PlayerStorage.DepositCoin -= UpdateScore;
         UIManager.GetFinalScore -= GetCurrentScore;
+        EnemyMain.EnemyDied -= UpdateScore;
     }
     void Start()
     {
