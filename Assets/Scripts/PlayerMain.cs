@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerMain : MonoBehaviour
 {
     [SerializeField]
+    private int _chargesLeft;
     private float _playerSpeed = 10f;
+
+    private bool _isFlipOccurring = false;
 
     private Vector2 _moveXY = new Vector2(0f, 0f), _currentDirection;
     private Vector3 _maskX, _maskY;
@@ -27,6 +30,7 @@ public class PlayerMain : MonoBehaviour
     [HideInInspector] public static SendString PlaySFX;
 
     [HideInInspector] public static SendInt AgeRequested;
+    [HideInInspector] public static SendInt ChargeUsed;
     [HideInInspector] public static OnSomeEvent HourGlassFlipped;
 
     void OnEnable()
@@ -58,6 +62,8 @@ public class PlayerMain : MonoBehaviour
     void SetUp()
     {
         AttackScript.SetAbilities((int)_currentAge);
+        _chargesLeft = 1;
+        _isFlipOccurring = false;
     }
 
     void Update()
@@ -66,8 +72,14 @@ public class PlayerMain : MonoBehaviour
         {
             Move();
 
-            if(Input.GetKeyDown(KeyCode.H))
+            if(Input.GetKeyDown(KeyCode.H) && _chargesLeft > 0 && !_isFlipOccurring)
+            {    
+                _isFlipOccurring = true;
+                _chargesLeft--;
+                ChargeUsed?.Invoke(_chargesLeft);
                 HourGlassFlipped?.Invoke();
+                _isFlipOccurring = false;
+            }
 
             if(Input.GetKeyDown(KeyCode.J))
                 AttackScript.Attack(_currentDirection);
@@ -92,36 +104,6 @@ public class PlayerMain : MonoBehaviour
             _currentDirection = _moveXY;
     }
 
-    public bool IsGrounded()
-    {
-        Ray2D[] jumpRays = CreateRays();
-        foreach(Ray2D ray in jumpRays)
-        {
-            Debug.DrawRay(ray.origin, ray.direction, Color.green, 5f);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, _maskY[1], GroundLayerMask);
-            
-            if (hit.collider != null) 
-            {    
-                // Debug.Log(hit.collider.gameObject.name);
-                return true;
-            }
-        }
-        // Debug.Log("Not on the ground!");
-        return false;
-    }//// End of IsGrounded()
-
-    public Ray2D[] CreateRays()
-    {
-        // Construct 3 rays at the bottom of the player's sprite.
-        return _rays = new Ray2D[3]
-                                    {
-                                        // Create raycast at position clickedTiles's origin + tile's bounding area + tile margin offset
-                                        new Ray2D(transform.position - _maskX, Vector2.down),             // Sends raycast 0.1m above tile
-                                        new Ray2D(transform.position + _maskX, Vector2.down),             // Sends raycast 0.1m below tile
-                                        new Ray2D(transform.position , Vector2.down),             // Sends raycast 0.1m to the right of the tile
-                                    };
-    }
-
 
     public void RepositionPlayer(Vector3 location)
     {
@@ -140,59 +122,15 @@ public class PlayerMain : MonoBehaviour
         return (int)_currentAge;
     }
 
+    public void ChargePickUp()
+    {
+        if(_chargesLeft < 3)
+        {    
+            _chargesLeft++;
+            ChargeUsed?.Invoke(_chargesLeft);
+        }
+        // else
+        // GetBonusPoints?.Invoke();
+    }
 
-// void SetPlayerAnimation()
-//     {
-        
-//         animator.SetFloat("_velocityY", _moveXY[1]);
-//         animator.SetFloat("_velocityX", Mathf.Abs(_moveXY[0]));
-
-//         if(_moveXY[1] != 0f && _isAirborne)
-//         {    
-//             animator.SetBool("_isAirborne", true);
-//             if(_moveXY[1] > 0)
-//             {
-//                 animator.SetBool("_isMovingUp", true);
-//                 animator.SetBool("_isMovingDown", false);
-//             }
-//             else
-//             {
-//                 animator.SetBool("_isMovingUp", false);
-//                 animator.SetBool("_isMovingDown", true);
-//             }
-//         }
-//         else
-//         {    
-//             animator.SetBool("_isAirborne", false);
-//             animator.SetBool("_isMovingUp", false);
-//             animator.SetBool("_isMovingDown", false);
-//         }
-        
-//         if(_moveXY[0] != 0f)
-//         {
-//             _isMovingSideways = true;
-//             animator.SetBool("_isMovingSideways", true);
-//         }
-//         else
-//         {
-//             _isMovingSideways = false;
-//             animator.SetBool("_isMovingSideways", false);
-//         }
-        
-//         if(_isMovingSideways)
-//         {    
-//             if(_moveXY[0] > 0f && !_isFacingRight && _isMovingSideways)
-//                     FlipSprite(); 
-//             else if(_moveXY[0] < 0f && _isFacingRight && _isMovingSideways) 
-//                     FlipSprite();
-//         }    
-//     }
-
-    // void FlipSprite()
-    // {
-    //     _isFacingRight = !_isFacingRight;
-    //     Vector3 theScale = transform.localScale;
-    //     theScale.x *= -1;
-    //     transform.localScale = theScale;
-    // }
 }

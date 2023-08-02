@@ -5,13 +5,11 @@ using UnityEngine;
 public class ItemSpawner : MonoBehaviour
 {
     public GameObject ItemPrefab;
-    // public GameObject[] ValidSpawnArea = new GameObject[4]; // Represent the coordinate boundaries that coins can spawn in. Indexes 0 and 3 represent the outer most boundaries; Index 1 and 2 represent internal boundary box i.e. the coin hole 
     private GameObject _tmpObj;
 
     private List<GameObject> _pooledObjsList = new List<GameObject>();
 
     private Vector3 _spawnTargetPos = new Vector3(0f, 0f, 0f);
-    // private List<CoinScriptable> _coinTypes = new List<CoinScriptable>();
     // public SOEnemy[] EnemyTypes;
 
     private int _tempInt;

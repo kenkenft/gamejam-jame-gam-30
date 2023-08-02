@@ -36,4 +36,9 @@ public class ItemHourGlass : MonoBehaviour
         else
             this.gameObject.SetActive(false);
     }
+
+    public void PickedUp()
+    {
+        this.gameObject.SetActive(false);
+    }
 }

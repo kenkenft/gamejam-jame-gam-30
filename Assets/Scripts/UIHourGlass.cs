@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UIHourGlass : MonoBehaviour
 {
+    
+    [SerializeField] private Text _chargesRemaining;
     [SerializeField] private Slider[] _sands;
     [SerializeField] private HourGlassInverted _isHourGlassInverted;
     [SerializeField] private Canvas _hourGlass;
@@ -16,6 +18,7 @@ public class UIHourGlass : MonoBehaviour
         UIManager.StartGameSetUp += SetUp;
         PlayerAge.HourGlassFlipped = InvertHourGlass;
         PlayerAge.HourGlassUpdated = UpdateHourGlass;
+        PlayerMain.ChargeUsed = UpdateChargeCount;
     }
 
     void OnDisable()
@@ -23,6 +26,7 @@ public class UIHourGlass : MonoBehaviour
         UIManager.StartGameSetUp -= SetUp;
         PlayerAge.HourGlassFlipped = null;
         PlayerAge.HourGlassUpdated = null;
+        PlayerMain.ChargeUsed = null;
     }
 
     // void start()
@@ -86,5 +90,9 @@ public class UIHourGlass : MonoBehaviour
         StopCoroutine("RotateHourGlass");
         Debug.Log("RotateHourGlass coroutine stopped");
         yield return null;
+    }
+    void UpdateChargeCount(int chargesLeft)
+    {
+        _chargesRemaining.text = $"Flips left:\n{chargesLeft}/3";
     }
 }
