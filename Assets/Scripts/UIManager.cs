@@ -166,35 +166,35 @@ public class UIManager : MonoBehaviour
     {
         int score = GetFinalScore.Invoke(), colorTagIndex = 0;
         string[] colorTag = {"<color=#000000>", "<color=#ffffff>", "<color=#ffffff>"};
-        string tempString = score.ToString(), results; 
+        string tempString = score.ToString();//, results; 
         ToggleCanvas("ResultsCanvas");
         _isPlaying = false;
         
-        if(score > 14000)
-        {
-            colorTagIndex = 0;
-            results = "A";
-            PlaySFX?.Invoke("resultsBest");
-        }
-        else if(score > 0 && score <= 14000)
-        {    
-            colorTagIndex = 2;
-            results = "B";
-            PlaySFX?.Invoke("resultsAverage");
-        }
-        else
-        {    
-            results = "F";
-            colorTagIndex = 1;
-            PlaySFX?.Invoke("resultsFail");
-        }
+        // if(score > 14000)
+        // {
+        //     colorTagIndex = 0;
+        //     // results = "A";
+        //     PlaySFX?.Invoke("resultsBest");
+        // }
+        // else if(score > 0 && score <= 14000)
+        // {    
+        //     colorTagIndex = 2;
+        //     // results = "B";
+        //     PlaySFX?.Invoke("resultsAverage");
+        // }
+        // else
+        // {    
+        //     // results = "F";
+        //     // colorTagIndex = 1;
+        //     PlaySFX?.Invoke("resultsFail");
+        // }
 
-        ResultsPanelImage.sprite = EndResultImages[colorTagIndex];
+        // ResultsPanelImage.sprite = EndResultImages[colorTagIndex];
         _resultsUITextArray[0].text = colorTag[colorTagIndex] + tempString + "</color>";
-        _resultsUITextArray[1].text = colorTag[colorTagIndex] + results + "</color>";
-        _resultsUITextArray[2].text = colorTag[colorTagIndex] + _resultsUITextArray[2].text.ToString() + "</color>";
-        _resultsUITextArray[3].text = colorTag[colorTagIndex] + _resultsUITextArray[3].text.ToString() + "</color>";
-        _resultsUITextArray[4].text = colorTag[colorTagIndex] + _resultsUITextArray[4].text.ToString() + "</color>";
+        // _resultsUITextArray[1].text = colorTag[colorTagIndex] + results + "</color>";
+        // _resultsUITextArray[2].text = colorTag[colorTagIndex] + _resultsUITextArray[2].text.ToString() + "</color>";
+        // _resultsUITextArray[3].text = colorTag[colorTagIndex] + _resultsUITextArray[3].text.ToString() + "</color>";
+        // _resultsUITextArray[4].text = colorTag[colorTagIndex] + _resultsUITextArray[4].text.ToString() + "</color>";
         // _resultsUITextArray[5].text = colorTag[colorTagIndex] + _resultsUITextArray[5].text.ToString() + "</color>";
         // _resultsUITextArray[6].text = colorTag[colorTagIndex] + _resultsUITextArray[6].text.ToString() + "</color>";
 
