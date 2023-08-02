@@ -13,22 +13,24 @@ public class UIHourGlass : MonoBehaviour
 
     void OnEnable()
     {
+        UIManager.StartGameSetUp += SetUp;
         PlayerAge.HourGlassFlipped = InvertHourGlass;
         PlayerAge.HourGlassUpdated = UpdateHourGlass;
     }
 
     void OnDisable()
     {
+        UIManager.StartGameSetUp -= SetUp;
         PlayerAge.HourGlassFlipped = null;
         PlayerAge.HourGlassUpdated = null;
     }
 
-    void start()
-    {
-        Setup();
-    }
+    // void start()
+    // {
+    //     SetUp();
+    // }
     
-    void Setup()
+    void SetUp()
     {
         _isHourGlassInverted = HourGlassInverted.No;
         _hourGlass.transform.eulerAngles = new Vector3(0f, 0f, 0f);

@@ -16,12 +16,10 @@ public class EnemyMain : MonoBehaviour
 
     [SerializeField] public static SendString PlaySFX;
 
-    void Start()
-    {
-        _rig = GetComponent<Rigidbody2D>();
-        _healthBar.SetUp();
-        SetUp();
-    }
+    // void Start()
+    // {
+    //     SetUp();
+    // }
 
     
 
@@ -45,6 +43,8 @@ public class EnemyMain : MonoBehaviour
         _healthBar.SetOffset(offset);
 
         _player = FindObjectOfType<PlayerMain>().gameObject.transform;
+        _rig = GetComponent<Rigidbody2D>();
+        _healthBar.SetUp();
     }
 
     void Update()

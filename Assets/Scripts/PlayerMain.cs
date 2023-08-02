@@ -7,7 +7,6 @@ public class PlayerMain : MonoBehaviour
     [SerializeField]
     private float _playerSpeed = 10f;
 
-    [SerializeField] private bool _isFacingRight = true, _isMovingSideways = false;
     private Vector2 _moveXY = new Vector2(0f, 0f), _currentDirection;
     private Vector3 _maskX, _maskY;
     public Rigidbody2D PlayerRig;
@@ -34,12 +33,14 @@ public class PlayerMain : MonoBehaviour
     {
         PlayerAge.AgeChanged = SetPlayerAge;
         PlayerAge.AgeRequested = GetPlayerAge;
+        UIManager.StartGameSetUp += SetUp;
     }
     
     void OnDisable()
     {
         PlayerAge.AgeChanged = null;
         PlayerAge.AgeRequested = null;
+        UIManager.StartGameSetUp -= SetUp;
     }
 
     void Start()
@@ -54,10 +55,15 @@ public class PlayerMain : MonoBehaviour
         AttackScript.SetAbilities((int)_currentAge);
     }
 
+    void SetUp()
+    {
+        AttackScript.SetAbilities((int)_currentAge);
+    }
+
     void Update()
     {
-        // if(CheckIsPlaying.Invoke())
-        // {
+        if(CheckIsPlaying.Invoke())
+        {
             Move();
 
             if(Input.GetKeyDown(KeyCode.H))
@@ -69,7 +75,7 @@ public class PlayerMain : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.K))
                 Debug.Log("Ability 2 called");
 
-        // }
+        }
     }
 
     private void Move()

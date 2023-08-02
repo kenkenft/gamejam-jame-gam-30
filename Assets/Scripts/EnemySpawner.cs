@@ -18,14 +18,14 @@ public class EnemySpawner : MonoBehaviour
 
     void OnEnable()
     {
-        // UIManager.StartGameSetUp += GameStartSetUp;
+        UIManager.StartGameSetUp += GameStartSetUp;
         PlayerAge.SpawnTimerExpired += SpawnEnemyOnField;
         // Timer.CheckCoinsDespawn += UpdateCoinDespawnTimers;
     }
 
     void OnDisable()
     {
-        // UIManager.StartGameSetUp -= GameStartSetUp;
+        UIManager.StartGameSetUp -= GameStartSetUp;
         PlayerAge.SpawnTimerExpired -= SpawnEnemyOnField;
         // Timer.CheckCoinsDespawn -= UpdateCoinDespawnTimers;
     }
@@ -113,21 +113,21 @@ public class EnemySpawner : MonoBehaviour
     private SOEnemy SelectRandomEnemyType()
     {
         _tempInt =  Random.Range(0,100);
-        Debug.Log("_tempInt: " + _tempInt);
+        // Debug.Log("_tempInt: " + _tempInt);
 
         if(_tempInt > 90)
         {    
-            Debug.Log("Large gear!: " + (EnemyTypes.Length-1));
+            // Debug.Log("Large gear!: " + (EnemyTypes.Length-1));
             return EnemyTypes[EnemyTypes.Length-1];
         }
         else if (_tempInt <= 90 && _tempInt > 70)
         {    
-            Debug.Log("Medium gear!: " + (EnemyTypes.Length-1));
+            // Debug.Log("Medium gear!: " + (EnemyTypes.Length-1));
             return EnemyTypes[1];
         }
         else
         {
-            Debug.Log("Small gear!: " + (EnemyTypes.Length-1));
+            // Debug.Log("Small gear!: " + (EnemyTypes.Length-1));
             return EnemyTypes[0];
         }
     } 

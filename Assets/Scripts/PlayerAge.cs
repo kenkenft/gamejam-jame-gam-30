@@ -21,17 +21,19 @@ public class PlayerAge : MonoBehaviour
     void OnEnable()
     {
         PlayerMain.HourGlassFlipped = FlipHourGlass;
+        UIManager.StartGameSetUp += SetUp;
     }
 
     void Disable()
     {
         PlayerMain.HourGlassFlipped = null;
+        UIManager.StartGameSetUp -= SetUp;
     }
 
-    void Start()
-    {
-        SetUp();
-    }
+    // void Start()
+    // {
+    //     SetUp();
+    // }
 
     void SetUp()
     {
@@ -58,7 +60,7 @@ public class PlayerAge : MonoBehaviour
         StopCoroutine("Countdown");
         PlaySFX?.Invoke("GameOver");
         // gameManager.TriggerEndgame();
-        // TriggerEndGame?.Invoke();
+        TriggerEndGame?.Invoke();
         yield return null;
     }
 

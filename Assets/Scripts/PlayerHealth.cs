@@ -8,11 +8,22 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private FloatingHealthBar _healthBar;
     [SerializeField] private float _maxHealth = 100f, _currentHealth;
     [SerializeField] public static SendString PlaySFX;
+    [HideInInspector] public static OnSomeEvent TriggerEndGame;
 
-    void Start()
+    void OnEnable()
     {
-        SetUp();
+        UIManager.StartGameSetUp += SetUp;
     }
+
+    void Disable()
+    {
+        UIManager.StartGameSetUp -= SetUp;
+    }
+    
+    // void Start()
+    // {
+    //     SetUp();
+    // }
 
     void SetUp()
     {
@@ -22,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void ModifyHealth(float amount)
     {
-        Debug.Log($"amount: {amount}");
+        // Debug.Log($"amount: {amount}");
         _currentHealth += amount;    // If amount is positive, then it is healing; if amount is negative, then it is damage
         _currentHealth = Mathf.Clamp(_currentHealth, 0f, _maxHealth);
         _healthBar.UpdateHealthBar(_currentHealth, _maxHealth);
@@ -32,9 +43,10 @@ public class PlayerHealth : MonoBehaviour
 
         if(_currentHealth <= 0f)
         {
-            Debug.Log("Player is dead");
+            // Debug.Log("Player is dead");
             PlaySFX?.Invoke("GameOver");
-            // ToDo Trigger endgame
+            StopCoroutine("Countdown");
+            TriggerEndGame?.Invoke();
         }
     }
 

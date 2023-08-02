@@ -19,27 +19,26 @@ public class UIManager : MonoBehaviour
     private int _textIndexPointer = 0; 
     [SerializeField] private Text[] _resultsUITextArray;
 
-    [HideInInspector] public delegate void OnPlayButtonClicked();
-    [HideInInspector] public static OnPlayButtonClicked StartGameSetUp;
-    [HideInInspector] public delegate int OnEndgGameTriggered();
-    [HideInInspector] public static OnEndgGameTriggered GetFinalScore;
+    [HideInInspector] public static OnSomeEvent StartGameSetUp;
+    [HideInInspector] public static ReturnInt GetFinalScore;
 
-    [HideInInspector] public delegate void OnPlaySFX(string audioName);
-    [HideInInspector] public static OnPlaySFX PlaySFX;
+    [HideInInspector] public static SendString PlaySFX;
     
     void OnEnable()
     {
         PlayerMain.TogglePauseUI += PauseGame;
         PlayerMain.CheckIsPlaying += GetIsPlaying;
-        Timer.CheckIsPaused += GetIsPaused;
-        Timer.TriggerEndGame += TriggerEndGame;
+        PlayerAge.CheckIsPaused += GetIsPaused;
+        PlayerAge.TriggerEndGame += TriggerEndGame;
+        PlayerHealth.TriggerEndGame += TriggerEndGame;
     }
     void Disable()
     {
         PlayerMain.TogglePauseUI -= PauseGame;
         PlayerMain.CheckIsPlaying += GetIsPlaying;
-        Timer.CheckIsPaused -= GetIsPaused;
-        Timer.TriggerEndGame -= TriggerEndGame;
+        PlayerAge.CheckIsPaused -= GetIsPaused;
+        PlayerAge.TriggerEndGame -= TriggerEndGame;
+        PlayerHealth.TriggerEndGame += TriggerEndGame;
     }
 
     void Start()
@@ -127,7 +126,7 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1;
         Debug.Log("Play button pressed!");
-        ToggleCanvas("PlayerOverlayCanvas");
+        ToggleCanvas("HourGlassCanvas");
         
         _isPlaying = true;
         _isPaused = false;
