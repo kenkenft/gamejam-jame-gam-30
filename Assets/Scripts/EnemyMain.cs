@@ -17,6 +17,7 @@ public class EnemyMain : MonoBehaviour
 
     [SerializeField] public static SendString PlaySFX;
     [SerializeField] public static SendInt EnemyDied;
+    [SerializeField] public static SendVector3 ItemDropped;
 
     // void Start()
     // {
@@ -80,6 +81,7 @@ public class EnemyMain : MonoBehaviour
             // Debug.Log($"{gameObject.name} is dead");
             EnemyDied?.Invoke(_pointValue);
             PlaySFX?.Invoke("EnemyDead");
+            SpawnItem();
             ToggleObjectComponents(false);
             // Play death animation;
         }
@@ -97,5 +99,12 @@ public class EnemyMain : MonoBehaviour
         _body.enabled = state;
         _face.enabled = state;
         _healthBar.ToggleHealthBar(state);
+    }
+
+    void SpawnItem()
+    {
+        int randomInt = Random.Range(1,100);
+        if(randomInt > 0)
+            ItemDropped?.Invoke(gameObject.transform.position);
     }
 }

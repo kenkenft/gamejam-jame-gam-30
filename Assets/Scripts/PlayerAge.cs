@@ -12,6 +12,7 @@ public class PlayerAge : MonoBehaviour
     [HideInInspector] public static OnSomeEvent TriggerEndGame;
     [HideInInspector] public static OnSomeEvent HourGlassFlipped;
     [HideInInspector] public static OnSomeEvent SpawnTimerExpired;
+    [HideInInspector] public static OnSomeEvent CheckItemsDespawn;
 
     [HideInInspector] public static SendInt AgeChanged;
     [HideInInspector] public static SendInt SurvivalTimeRequested;
@@ -51,15 +52,16 @@ public class PlayerAge : MonoBehaviour
         while(_currentTime > 0)
         {
             yield return GameProperties.timerDelay;
-            // if(!CheckIsPaused.Invoke())
-            // {
+            if(!CheckIsPaused.Invoke())
+            {
                 CheckSpawnTime();
                 _currentTime--;
                 // Debug.Log($"Time Left: {_currentTime}");
+                CheckItemsDespawn?.Invoke();
                 HourGlassUpdated?.Invoke((float)_currentTime/(float)_maxTime);
                 SetPlayerAge();
                 _timeSurvived++;
-            // }
+            }
         }
         StopCoroutine("Countdown");
         SurvivalTimeRequested?.Invoke(_timeSurvived);

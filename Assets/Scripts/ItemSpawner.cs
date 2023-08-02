@@ -18,14 +18,16 @@ public class ItemSpawner : MonoBehaviour
     {
         UIManager.StartGameSetUp += GameStartSetUp;
         UIManager.FieldCleared += ClearField;
-        // Timer.CheckCoinsDespawn += UpdateCoinDespawnTimers;
+        PlayerAge.CheckItemsDespawn += UpdateItemDespawnTimers;
+        EnemyMain.ItemDropped += SpawnItemOnField;
     }
 
     void OnDisable()
     {
         UIManager.StartGameSetUp -= GameStartSetUp;
         UIManager.FieldCleared -= ClearField;
-        // Timer.CheckCoinsDespawn -= UpdateCoinDespawnTimers;
+        PlayerAge.CheckItemsDespawn -= UpdateItemDespawnTimers;
+        EnemyMain.ItemDropped -= SpawnItemOnField;
     }
 
     public void GameStartSetUp()

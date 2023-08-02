@@ -83,7 +83,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemyOnField()
     {
-        int randomInt = Random.Range(1,6);
+        int randomInt = Random.Range(1,4);
         
         for(int i=0; i < randomInt; i++)
         {

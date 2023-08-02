@@ -8,6 +8,7 @@ public delegate void SendFloat(float value);
 public delegate void SendString(string value);
 public delegate bool ReturnBool();
 public delegate int ReturnInt();
+public delegate void SendVector3(Vector3 data);
 public enum AgeState
 {
     Young, Middle, Old, Dead 
