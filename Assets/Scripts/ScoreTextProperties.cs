@@ -14,6 +14,7 @@ public class ScoreTextProperties : MonoBehaviour
         // PlayerStorage.DepositCoin += UpdateScore;
         UIManager.GetFinalScore += GetCurrentScore;
         EnemyMain.EnemyDied += UpdateScore;
+        PlayerMain.ExtraItemsPickedUp += UpdateScore;
     }
 
     void OnDisable()
@@ -21,6 +22,7 @@ public class ScoreTextProperties : MonoBehaviour
         // PlayerStorage.DepositCoin -= UpdateScore;
         UIManager.GetFinalScore -= GetCurrentScore;
         EnemyMain.EnemyDied -= UpdateScore;
+        PlayerMain.ExtraItemsPickedUp -= UpdateScore;
     }
     void Start()
     {

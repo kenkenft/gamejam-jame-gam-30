@@ -31,6 +31,7 @@ public class PlayerMain : MonoBehaviour
 
     [HideInInspector] public static SendInt AgeRequested;
     [HideInInspector] public static SendInt ChargeUsed;
+    [HideInInspector] public static SendInt ExtraItemsPickedUp;
     [HideInInspector] public static OnSomeEvent HourGlassFlipped;
 
     void OnEnable()
@@ -129,8 +130,8 @@ public class PlayerMain : MonoBehaviour
             _chargesLeft++;
             ChargeUsed?.Invoke(_chargesLeft);
         }
-        // else
-        // GetBonusPoints?.Invoke();
+        else
+            ExtraItemsPickedUp?.Invoke(100);
     }
 
 }
