@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     public Sprite[] EndResultImages;
 
     [SerializeField] private GameObject[] _instructionTextArray;
-    private int _textIndexPointer = 0; 
+    private int _textIndexPointer = 0, _survivalTime = 0; 
     [SerializeField] private Text[] _resultsUITextArray;
 
     [HideInInspector] public static OnSomeEvent StartGameSetUp;
@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
         PlayerMain.CheckIsPlaying += GetIsPlaying;
         PlayerAge.CheckIsPaused += GetIsPaused;
         PlayerAge.TriggerEndGame += TriggerEndGame;
+        PlayerAge.SurvivalTimeRequested += GetSurvivalTime;
         PlayerHealth.TriggerEndGame += TriggerEndGame;
     }
     void Disable()
@@ -39,6 +40,7 @@ public class UIManager : MonoBehaviour
         PlayerMain.CheckIsPlaying += GetIsPlaying;
         PlayerAge.CheckIsPaused -= GetIsPaused;
         PlayerAge.TriggerEndGame -= TriggerEndGame;
+        PlayerAge.SurvivalTimeRequested -= GetSurvivalTime;
         PlayerHealth.TriggerEndGame += TriggerEndGame;
     }
 
@@ -166,33 +168,15 @@ public class UIManager : MonoBehaviour
     public void TriggerEndGame()
     {
         FieldCleared?.Invoke();
-        int score = GetFinalScore.Invoke();// colorTagIndex = 0;
-        // string[] colorTag = {"<color=#000000>", "<color=#ffffff>", "<color=#ffffff>"};
+        int score = GetFinalScore.Invoke();
         string tempString = score.ToString();//, results; 
         ToggleCanvas("ResultsCanvas");
         _isPlaying = false;
         
-        // if(score > 14000)
-        // {
-        //     colorTagIndex = 0;
-        //     // results = "A";
-        //     PlaySFX?.Invoke("resultsBest");
-        // }
-        // else if(score > 0 && score <= 14000)
-        // {    
-        //     colorTagIndex = 2;
-        //     // results = "B";
-        //     PlaySFX?.Invoke("resultsAverage");
-        // }
-        // else
-        // {    
-        //     // results = "F";
-        //     // colorTagIndex = 1;
-        //     PlaySFX?.Invoke("resultsFail");
-        // }
 
         // ResultsPanelImage.sprite = EndResultImages[colorTagIndex];
          _resultsUITextArray[0].text = tempString;
+         _resultsUITextArray[1].text = _survivalTime.ToString();
         // _resultsUITextArray[0].text = colorTag[colorTagIndex] + tempString + "</color>";
         // _resultsUITextArray[1].text = colorTag[colorTagIndex] + results + "</color>";
         // _resultsUITextArray[2].text = colorTag[colorTagIndex] + _resultsUITextArray[2].text.ToString() + "</color>";
@@ -211,6 +195,11 @@ public class UIManager : MonoBehaviour
         _textIndexPointer = 0;
         AdvanceInstructionText();
         PlaySFX?.Invoke("Pickup");
+    }
+
+    void GetSurvivalTime(int survivalTime)
+    {
+        _survivalTime = survivalTime;
     }
 
 }

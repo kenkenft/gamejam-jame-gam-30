@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAge : MonoBehaviour
 {
     
-    [SerializeField] private int _maxTime = 60, _currentTime = 0, _enemySpawnTimer = 10;
+    [SerializeField] private int _maxTime = 60, _currentTime = 0, _enemySpawnTimer = 10, _timeSurvived = 0;
     public Sprite[] PlayerFaces;
     private SpriteRenderer _face;
     [HideInInspector] public static ReturnBool CheckIsPaused;
@@ -14,6 +14,7 @@ public class PlayerAge : MonoBehaviour
     [HideInInspector] public static OnSomeEvent SpawnTimerExpired;
 
     [HideInInspector] public static SendInt AgeChanged;
+    [HideInInspector] public static SendInt SurvivalTimeRequested;
     [HideInInspector] public static ReturnInt AgeRequested;
     [HideInInspector] public static SendFloat HourGlassUpdated;
     [SerializeField] public static SendString PlaySFX;
@@ -39,6 +40,8 @@ public class PlayerAge : MonoBehaviour
     {
         _face = GetComponent<SpriteRenderer>();
         _currentTime = _maxTime;
+        _timeSurvived = 0;
+        _enemySpawnTimer = 10;
         StartCoroutine("Countdown");
     }
 
@@ -55,9 +58,11 @@ public class PlayerAge : MonoBehaviour
                 // Debug.Log($"Time Left: {_currentTime}");
                 HourGlassUpdated?.Invoke((float)_currentTime/(float)_maxTime);
                 SetPlayerAge();
+                _timeSurvived++;
             // }
         }
         StopCoroutine("Countdown");
+        SurvivalTimeRequested?.Invoke(_timeSurvived);
         PlaySFX?.Invoke("GameOver");
         // gameManager.TriggerEndgame();
         TriggerEndGame?.Invoke();
