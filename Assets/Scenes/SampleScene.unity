@@ -180,6 +180,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &85455722 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4861858848555835300, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+  m_PrefabInstance: {fileID: 292359244}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &91434370
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +291,18 @@ PrefabInstance:
       propertyPath: m_FontData.m_Font
       value: 
       objectReference: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 4861858848300025642, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861858848300025643, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_Text
+      value: For Jame Gam 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861858848300025643, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 4861858848357209901, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -301,6 +318,20 @@ PrefabInstance:
     - target: {fileID: 4861858848528284716, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
       propertyPath: m_SortingOrder
       value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861858848658501841, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_Text
+      value: 'Controls:
+
+        - Menus: <color=#feae34>Mouse</color>
+
+        -
+        Move: <color=#feae34>W,A,S,D or Arrows</color>
+
+        - Flip HourGlass:
+        <color=#feae34>H</color>
+
+        - Attack: <color=#feae34>J</color>'
       objectReference: {fileID: 0}
     - target: {fileID: 4861858848689495915, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
       propertyPath: m_AnchorMax.y
@@ -402,6 +433,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4861858849121485760, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_Text
+      value: Surviving Gears And Time
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861858849121485760, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 4861858849121485763, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 4861858849121631747, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -430,6 +473,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4861858849495963653, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_Text
+      value: "Objective:\n- <color=#feae34>Survive</color> the <color=#feae34>attacking
+        gears</color> for as long as possible.\n- The game is over when:\n   - Your
+        health reaches <color=#feae34>zero</color>\n   - The hourglass is <color=#feae34>depleted</color>\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861858849495963653, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4861858850000158063, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
       propertyPath: m_Camera
       value: 
@@ -437,6 +490,22 @@ PrefabInstance:
     - target: {fileID: 4861858850000158063, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
       propertyPath: m_SortingOrder
       value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861858850137510120, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_Text
+      value: 'Credits
+
+        Developer: Ken Tang
+
+        Spites: Ken Tang
+
+        Assets
+        from:
+
+        - "Free Casual Game SFX Pack" by Dustyroom
+
+        - "Free
+        SFX Pack" by Oliver Girardot'
       objectReference: {fileID: 0}
     - target: {fileID: 4861858850271723378, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
       propertyPath: m_RootOrder
@@ -482,6 +551,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4861858850271723379, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: _instructionTextArray.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861858850271723379, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: _instructionTextArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 884235534}
+    - target: {fileID: 4861858850271723379, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: _instructionTextArray.Array.data[1]
+      value: 
+      objectReference: {fileID: 2010047525}
+    - target: {fileID: 4861858850271723379, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: _instructionTextArray.Array.data[2]
+      value: 
+      objectReference: {fileID: 85455722}
     - target: {fileID: 4861858850271723381, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
       propertyPath: m_Name
       value: UIs
@@ -509,6 +594,13 @@ PrefabInstance:
     - target: {fileID: 4861858850402140533, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861858850407877159, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_Text
+      value: "Tips:\n- Your character's <color=#feae34>age</color> will depend on
+        the remaining time in the <color=#feae34>hourglass</color>\n- Your <color=#feae34>age</color>
+        will affect your <color=#feae34>attacks</color> \n- <color=#feae34>Flipping</color>
+        the hourglass will reverse expended time into remaining time and vice versa."
       objectReference: {fileID: 0}
     - target: {fileID: 6336699632618823147, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
       propertyPath: m_OverridePixelPerfect
@@ -573,6 +665,30 @@ PrefabInstance:
     - target: {fileID: 6420128005810695909, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943435848829644883, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943435848829644883, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943435848829644883, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943435848829644883, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943435848829644883, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -390
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943435848829644883, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 325
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
@@ -856,6 +972,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &884235534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4861858848866962963, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+  m_PrefabInstance: {fileID: 292359244}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &896073398 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6612125241231394897, guid: d402aeca487d8b540b30b13296f9b22a, type: 3}
@@ -1486,6 +1607,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2010047525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4861858850404545957, guid: a15e6196b47e0464f97d6aeaeeb3cc49, type: 3}
+  m_PrefabInstance: {fileID: 292359244}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2085495332 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4421046224150471586, guid: b2dc22b75fe6ec046b978660d0d3ca27, type: 3}

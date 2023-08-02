@@ -13,7 +13,8 @@ public class FloatingHealthBar : MonoBehaviour
 
     public void SetUp()
     {
-        _camera = FindObjectOfType<Camera>();
+        // _camera = FindObjectOfType<Camera>();
+        _camera = Camera.main;
         _canvas = GetComponentInParent<Canvas>();
         _canvas.worldCamera = _camera;
     }

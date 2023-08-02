@@ -55,8 +55,8 @@ public class EnemySpawner : MonoBehaviour
         _tmpObj = Instantiate(EnemyPrefab);
         _tmpObj.name = "Enemy Prefab " + _pooledObjsList.Count;
         _tmpObj.transform.parent = transform;
-        EnableEnemyComponents(isActive);
         _tmpObj.GetComponent<EnemyMain>().SetUp();
+        EnableEnemyComponents(isActive);
         _pooledObjsList.Add(_tmpObj);
     }
 
@@ -87,9 +87,9 @@ public class EnemySpawner : MonoBehaviour
         {
             _tmpObj = GetPooledEnemy();
             _tmpObj.GetComponent<EnemyMain>().EnemyProperties = SelectRandomEnemyType();
-            _tmpObj.GetComponent<EnemyMain>().SetUp();
             SelectValidSpawnCoord();
             EnableEnemyComponents(true);
+            _tmpObj.GetComponent<EnemyMain>().SetUp();
             _tmpObj.transform.position = _spawnTargetPos;
         }
     }
